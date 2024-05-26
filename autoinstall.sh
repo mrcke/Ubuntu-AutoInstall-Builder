@@ -57,7 +57,7 @@ while true; do
     case $choice in
         1)
             clear
-            ls "$uDir"/*live-server-amd64.iso || wget "$link" -P "$uDir"
+            ls "$uDir"/*.iso || wget "$link" -P "$uDir"
             echo -e "already downloaded \n"
             continue
             ;;
@@ -88,8 +88,6 @@ autoinstall:
     hostname: $hostname
     username: $username
     password: "$hashed_password"
-  kernel:
-    package: linux-generic
   ssh:
     install-server: true
     allow-pw: true
@@ -126,8 +124,11 @@ EOF
             continue
             ;;
         5)
+            uDisVmlin=$(ls /root/ubuntuauto/source-files/casper/vmlinu* | sed 's|.*/casper/\(.*\)|/casper/\1|')
+            uDisInitr=$(ls /root/ubuntuauto/source-files/casper/initr* | sed 's|.*/casper/\(.*\)|/casper/\1|')
+
             chmod 700 "$uDis"/boot/grub/grub.cfg
-cat << 'EOF' >"$uDis"/boot/grub/grub.cfg
+cat << EOF >"$uDis"/boot/grub/grub.cfg
 set timeout=3
 
 loadfont unicode
@@ -137,8 +138,8 @@ set menu_color_highlight=black/light-gray
 
 menuentry "AutoInstall" {
     set gfxpayload=keep
-    linux   /casper/vmlinuz autoinstall ds=nocloud\;s=/cdrom/nocloud/ ---
-    initrd  /casper/initrd.gz
+    linux   $uDisVmlin autoinstall ds=nocloud\;s=/cdrom/nocloud/ ---
+    initrd  $uDisInitr
 }
 menuentry 'Test memory' {
     linux16 /boot/memtest86+.bin
