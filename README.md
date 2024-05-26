@@ -1,4 +1,4 @@
-AutoInstallBuilder for Ubuntu 
+AutoInstall Builder for Ubuntu 
 
 AutoInstallBuilder is a Bash script designed to automate the process of creating a custom Ubuntu 22.04.2 Live Server ISO. This custom ISO includes pre-configured user-data for Ubuntu's auto-install feature, allowing for a hands-off installation process. It's ideal for rapidly deploying Ubuntu servers with predefined settings. 
 
