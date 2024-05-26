@@ -41,7 +41,7 @@ The script operates through a menu-driven interface, offering options to:
 
 
 Customization
-You can edit the AutoInstallBuilder.sh script to modify default paths, the download link for the Ubuntu ISO, or to customize the GRUB menu entries according to your requirements.
+You can edit the autoinstall.sh script to modify default paths, the download link for the Ubuntu ISO, or to customize the GRUB menu entries according to your requirements.
 Contributing
 
 Contributions are welcome! Please feel free to submit pull requests or open issues to suggest improvements or report bugs.
